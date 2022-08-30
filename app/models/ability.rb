@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     return unless user.present?
 
-    can :destroy, Recipe, user: user
+    can :destroy, Recipe, user:
 
     # Define abilities for the user here. For example:
     #

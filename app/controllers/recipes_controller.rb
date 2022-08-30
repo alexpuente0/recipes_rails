@@ -13,8 +13,9 @@ class RecipesController < ApplicationController
 
   def create
     values = params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description)
-    @recipe = Recipe.new(name: values[:name], preparation_time: values[:preparation_time], cooking_time: values[:cooking_time],
-                         description: values[:description], user_id: current_user.id)
+    @recipe = Recipe.new(name: values[:name], preparation_time: values[:preparation_time],
+                         cooking_time: values[:cooking_time], description: values[:description],
+                         user_id: current_user.id)
 
     if @recipe.save
       redirect_to recipes_path,
