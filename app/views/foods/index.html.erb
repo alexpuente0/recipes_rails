@@ -1,1 +1,12 @@
 <h1> List of foods </h1>
+
+  <%=link_to "Add Food to List", new_food_path %>
+
+<div class="foodscontainer">
+  <% @foods.each do |food| %>
+<%= food.name %>
+<%= food.quantity %> 
+<%= food.measurement_unit %> 
+$<%= food.price %> 
+  </div>
+  <% end %> 
