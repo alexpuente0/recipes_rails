@@ -75,4 +75,4 @@ group :test do
   gem 'webdrivers'
 end
 
-gem "cancancan", "~> 3.4"
+gem 'cancancan', '~> 3.4'
