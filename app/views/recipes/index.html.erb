@@ -1,0 +1,17 @@
+<h1> List of Recipes </h1>
+
+  <%=link_to "Add New Recipe", new_recipe_path %> 
+
+
+<div class="recipescontainer">
+  <% @recipes.each do |recipe| %>
+  <br>
+  <%= link_to recipe_path(recipe.id) do %>
+<%= recipe.name %> <br>
+<%= recipe.description %>
+  </div>
+  <% end %> 
+       <% if can? :destroy, recipe %>
+       <%= button_to 'Remove', recipe_path(recipe.id), method: :delete %>
+      <% end %>
+    <% end %> 
