@@ -36,7 +36,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe.toggle!(:public)
 
-     if @recipe.save
+    if @recipe.save
       redirect_to recipe_path(@recipe.id),
                   notice: 'Your recipe Visibility has changed'
     else
@@ -47,5 +47,4 @@ class RecipesController < ApplicationController
   def public_recipes
     @recipes = Recipe.where(public: true).order(created_at: :desc)
   end
-  
 end
