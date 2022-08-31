@@ -1,0 +1,7 @@
+<%= form_with model: @recipe_food, url: recipe_recipe_food_path, method: :patch do |f| %>
+  <%= f.label :food %>
+  <%= f.select :food_id, Food.all.map { |food| [food.name, food.id] } %>
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity %>
+  <%= f.submit "Edit" %>
+<%end%>

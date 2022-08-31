@@ -11,6 +11,6 @@
 <%= food.quantity %> 
 <%= food.measurement_unit %> 
 $<%= food.price %> 
-  
+<%= button_to 'Delete', food_path(food.id), method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %> 
   </div>

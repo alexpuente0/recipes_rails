@@ -19,4 +19,12 @@ class FoodsController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    @food = Food.find(params[:id])
+    @food.destroy
+    @recipe_food = RecipeFood.find(params[:id])
+    @recipe_food.destroy
+    redirect_to request.referrer
+  end
 end
