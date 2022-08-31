@@ -6,9 +6,11 @@
 
 <div class="foodscontainer">
   <% @foods.each do |food| %>
+  <br>
 <%= food.name %>
 <%= food.quantity %> 
 <%= food.measurement_unit %> 
 $<%= food.price %> 
-  </div>
+  
   <% end %> 
+  </div>
