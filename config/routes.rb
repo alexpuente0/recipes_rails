@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   post 'toggle_visible', to: 'recipes#toggle_visible', as: 'toggle_visible'
 
   get '/public_recipes' => 'recipes#public_recipes'
+  get '/shopping_list' => 'recipes#shopping_list'
 end

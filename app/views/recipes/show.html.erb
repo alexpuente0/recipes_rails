@@ -40,7 +40,7 @@ is this recipe public?: <%= @recipe.public? %>
       <tr>
         <td><%= recipe_food.food.name %></td>
         <td><%= recipe_food.quantity %></td>
-        <td><%= recipe_food.food.price * recipe_food.quantity %></td>
+        <td><%= recipe_food.food.price * recipe_food.quantity%></td>
         <td>
               <% if can? :manage, @recipe %>
               <%= link_to 'Edit', edit_recipe_recipe_food_path(@recipe, recipe_food) %>
