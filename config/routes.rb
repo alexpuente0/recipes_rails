@@ -5,13 +5,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  root "foods#index"
-    resources :foods, only: [:new, :create]
+  root "recipes#index"
+    resources :foods, only: [:index, :new, :create]
     resources :recipes, only: [:index, :show, :new, :create, :destroy]
 
   
   post 'toggle_visible', to: 'recipes#toggle_visible', as: 'toggle_visible'
-
-
 
 end
