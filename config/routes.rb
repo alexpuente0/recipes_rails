@@ -9,4 +9,9 @@ Rails.application.routes.draw do
     resources :foods, only: [:new, :create]
     resources :recipes, only: [:index, :show, :new, :create, :destroy]
 
+  
+  post 'toggle_visible', to: 'recipes#toggle_visible', as: 'toggle_visible'
+
+
+
 end

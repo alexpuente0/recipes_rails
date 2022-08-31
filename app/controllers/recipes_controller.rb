@@ -31,4 +31,17 @@ class RecipesController < ApplicationController
     @recipe.destroy
     redirect_to recipes_path
   end
+
+  def toggle_visible
+    @recipe = Recipe.find(params[:id])
+    @recipe.toggle!(:public)
+
+     if @recipe.save
+      redirect_to recipe_path(@recipe.id),
+                  notice: 'Your recipe Visibility has changed'
+    else
+      render :new
+    end
+  end
+
 end
