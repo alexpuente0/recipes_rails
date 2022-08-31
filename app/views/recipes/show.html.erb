@@ -18,3 +18,21 @@ How to prepare <%= @recipe.name %>: <br>
       <% end %>
 is this recipe public?: <%= @recipe.public? %>
 </div>
+
+<div>
+      <%= button_to 'Generate Shopping List'%>
+      <% if can? :manage, @recipe %>
+        <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe) %>
+      <% end %>  
+</div>
+
+<table class="table table-striped">
+  <tr>
+      <th>Food</th>
+      <th>Quatity</th>
+      <th>Price</th>
+      <th>Actions</th>
+  </tr>
+</table>
+
+
