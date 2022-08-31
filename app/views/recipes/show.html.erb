@@ -1,0 +1,15 @@
+<h1> <%= @recipe.name %> </h1>
+
+<div>
+Cooking time: <%= @recipe.cooking_time%> <br>
+Preparation time: <%= @recipe.preparation_time%>
+</div>
+
+<p> 
+How to prepare <%= @recipe.name %>: <br>
+<%= @recipe.description%> 
+</p>
+
+<div>
+is this recipe public?: <%= @recipe.public? %>
+</div>
