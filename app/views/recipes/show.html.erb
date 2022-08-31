@@ -1,3 +1,5 @@
+<%= render 'shared/navigation', post: @post%>
+
 <h1> <%= @recipe.name %> </h1>
 
 <div>
@@ -11,5 +13,8 @@ How to prepare <%= @recipe.name %>: <br>
 </p>
 
 <div>
+       <% if can? :manage, @recipe %>
+       <%= button_to 'Change Visibility', toggle_visible_path(id: @recipe.id), method: :post %>
+      <% end %>
 is this recipe public?: <%= @recipe.public? %>
 </div>

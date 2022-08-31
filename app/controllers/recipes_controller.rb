@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.where(user_id: current_user.id)
   end
 
   def show
@@ -30,5 +30,21 @@ class RecipesController < ApplicationController
 
     @recipe.destroy
     redirect_to recipes_path
+  end
+
+  def toggle_visible
+    @recipe = Recipe.find(params[:id])
+    @recipe.toggle!(:public)
+
+    if @recipe.save
+      redirect_to recipe_path(@recipe.id),
+                  notice: 'Your recipe Visibility has changed'
+    else
+      render :new
+    end
+  end
+
+  def public_recipes
+    @recipes = Recipe.where(public: true).order(created_at: :desc)
   end
 end

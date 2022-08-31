@@ -1,11 +1,6 @@
 <%= render 'shared/navigation', post: @post%>
 
-<h1> Your Recipes </h1>
-
-  <%=link_to "Add New Recipe", new_recipe_path %> 
-
-
-<div class="recipescontainer">
+<h1> All Recipes </h1>
   <% @recipes.each do |recipe| %>
   <br>
   <%= link_to recipe_path(recipe.id) do %>
