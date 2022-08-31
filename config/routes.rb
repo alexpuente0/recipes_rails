@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   root "foods#index"
+    resources :foods, only: [:new, :create]
 
 end
