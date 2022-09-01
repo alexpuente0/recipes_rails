@@ -1,6 +1,24 @@
 <h1>shopping list</h1>
 
+<table class="table table-striped">
+<thead>
+  <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Price</th> 
+  </tr>
+</thead>
+<tbody>
   <% @items.each do |item| %>
-  <br>
-  <%= item.food.name%>, <%= item.quantity - item.food.quantity %>, $<%= (item.quantity - item.food.quantity)*item.food.price %>
+  <tr>
+  <% if %>
+  <%(item.quantity - item.food.quantity).positive? %>
+  <td> <%= item.food.name%> </td>
+  <td> <%= item.quantity - item.food.quantity %> </td>
+  <td> $<%= (item.quantity - item.food.quantity)*item.food.price %> </td>
   <% end %>
+  <% end %>
+    
+      </tr>
+</tbody>
+</table>
