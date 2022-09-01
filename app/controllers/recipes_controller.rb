@@ -56,10 +56,10 @@ class RecipesController < ApplicationController
       food_required = food.recipe_foods.sum(:quantity)
       required = food_required - food_quantity
       #if the required quantity is greater than 0, add it to the requirements array
-      if required > 0
-        @requirements << {name: food.name, required: required, price: food.price * required}
+        if required > 0
+          @requirements << {name: food.name, required: required, price: food.price * required}
+        end
       end
-    end
     #Calculate the total cost of the shopping list
     @total_cost = @requirements.sum {|h| h[:price] }
     #Calculate the total number of elements in the shopping list
