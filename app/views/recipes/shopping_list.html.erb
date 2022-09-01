@@ -2,5 +2,5 @@
 
   <% @items.each do |item| %>
   <br>
-  <%= item.food.name%>, <%= item.food.quantity - item.quantity%>
+  <%= item.food.name%>, <%= item.quantity - item.food.quantity %>, $<%= (item.quantity - item.food.quantity)*item.food.price %>
   <% end %>
