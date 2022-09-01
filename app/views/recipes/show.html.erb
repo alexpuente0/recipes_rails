@@ -20,7 +20,7 @@ is this recipe public?: <%= @recipe.public? %>
 </div>
 
 <div>
-      <%= button_to 'Generate Shopping List'%>
+      <%= button_to 'Generate Shopping List', shopping_list_path, method: :post %>
       <% if can? :manage, @recipe %>
         <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe) %>
       <% end %>  

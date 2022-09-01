@@ -49,6 +49,13 @@ class RecipesController < ApplicationController
   end
 
   def shopping_list
-    
+    @recipes = Recipe.where(public: true).includes(:recipe_foods, :foods)
+    @items = []
+    @recipes.each do |recipe|
+      recipe.recipe_foods.each do |food|
+        @items << food unless @items.include?(food)
+        
+      end
+    end
   end
 end
