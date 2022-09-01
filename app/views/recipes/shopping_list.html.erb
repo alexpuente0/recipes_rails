@@ -9,17 +9,14 @@
   </tr>
 </thead>
 <tbody>
+  <%= @group %>
   <%= @result %>
-  <% @items.each do |item| %>
+  <% @result.each do |item, value| %>
   <tr>
-  <% if %>
-  <%(item.quantity - item.food.quantity).positive? %>
-  <td> <%= item.food.name%> </td>
-  <td> <%= item.quantity - item.food.quantity %> </td>
-  <td> $<%= (item.quantity - item.food.quantity)*item.food.price %> </td>
+  <td> <%= item%> </td>
+  <td> <%= value[:difference] %> </td>
+  <td> $<%= value[:difference] * value[:cost] %> </td>
   <% end %>
-  <% end %>
-    
-      </tr>
+  </tr>
 </tbody>
 </table>

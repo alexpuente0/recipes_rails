@@ -49,13 +49,18 @@ class RecipesController < ApplicationController
   end
 
   def shopping_list
-    @recipes = Recipe.where(public: true).includes(:recipe_foods, :foods)
-    @items = []
-    @recipes.each do |recipe|
-      recipe.recipe_foods.each do |food|
-        @items << food unless @items.include?(food)
-        @result = Hash[@items.map { |item| [item.food_id, item.quantity] }]
-      end
+    @foods = current_user.foods.order(:id)
+    @recipe_foods = RecipeFood.where(food_id: @foods)
+    @group = @foods.zip(@recipe_foods).to_h
+    @result = {}
+    @total_cost = 0
+    @group.each do |food, recipe_food|
+      diff = food.quantity - recipe_food.quantity
+      next unless diff.negative?
+
+      cost = diff * food.price
+      @total_cost += cost
+      @result[food.name] = { difference: -diff, cost: -cost }
     end
   end
 end
