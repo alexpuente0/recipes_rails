@@ -54,11 +54,7 @@ class RecipesController < ApplicationController
     @recipes.each do |recipe|
       recipe.recipe_foods.each do |food|
         @items << food unless @items.include?(food)
-        @items.each do |item|
-          if item.food_id == food.food_id
-            item.quantity += food.quantity
-          end
-        end
+        @result = Hash[@items.map { |item| [item.food_id, item.quantity] }]
       end
     end
   end
