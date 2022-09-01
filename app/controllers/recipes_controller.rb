@@ -49,18 +49,11 @@ class RecipesController < ApplicationController
   end
 
   def shopping_list
-    @foods = current_user.foods.order(:id)
-    @recipe_foods = RecipeFood.where(food_id: @foods)
-    @group = @foods.zip(@recipe_foods).to_h
-    @result = {}
-    @total_cost = 0
-    @group.each do |food, recipe_food|
-      diff = food.quantity - recipe_food.quantity
-      next unless diff.negative?
-
-      cost = diff * food.price
-      @total_cost += cost
-      @result[food.name] = { difference: -diff, cost: -cost }
+    @requirements = []
+    current_user.foods.each do |food|
+      required = food.recipe_foods.sum(:quantity) - food.quantity
+      @requirements << {name: food.name, required: required, price: food.price * required}
     end
+    @total_cost = @requirements.sum {|h| h[:price] }
   end
 end
