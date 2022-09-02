@@ -77,4 +77,4 @@ end
 
 gem 'cancancan', '~> 3.4'
 
-gem "bullet", "~> 7.0"
+gem 'bullet', '~> 7.0'
