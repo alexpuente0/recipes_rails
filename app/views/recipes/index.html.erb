@@ -1,19 +1,32 @@
 <%= render 'shared/navigation', post: @post%>
 
-<h1> Your Recipes </h1>
+<div class="sm:flex justify-center p-5">
+<h1 class="text-2xl font-normal leading-normal mt-0 mb-2"> 
+Your Recipes </h1>
+</div>
 
-  <%=link_to "Add New Recipe", new_recipe_path %> 
+  
 
-
-<div class="recipescontainer">
+<div class="sm:flex flex-col items-center">
+<%=link_to "Add New Recipe", new_recipe_path, class: "bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded" %> 
   <% @recipes.each do |recipe| %>
-  <br>
-  <%= link_to recipe_path(recipe.id) do %>
-<%= recipe.name %> <br>
-<%= recipe.description %>
-  </div>
-  <% end %> 
-       <% if can? :destroy, recipe %>
-       <%= button_to 'Remove', recipe_path(recipe.id), method: :delete %>
-      <% end %>
-    <% end %> 
+
+
+    <div class="border-2 border-gray-300 hover:border-gray-500 w-auto m-2 p-2 bg-white sm:flex items-center justify-between w-6/12">
+        <div class="sm:flex flex-col ">
+          <%= link_to recipe_path(recipe.id) do %>
+            <%= recipe.name %>
+          <%end%> 
+          <% if can? :destroy, recipe %>
+            <%= button_to 'Remove', recipe_path(recipe.id), method: :delete, class: "hover:underline hover:font-bold hover:text-red-500" %>
+          <% end %>
+        </div> 
+        <%= link_to recipe_path(recipe.id) do %>
+          <%= recipe.description %>
+         <%end%> 
+    </div>
+  
+    
+  
+  <% end %>
+</div>
