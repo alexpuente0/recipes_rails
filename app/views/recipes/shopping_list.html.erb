@@ -1,0 +1,22 @@
+<h1>shopping list</h1>
+<%= @recipes %>
+<h2>Total elements: <%=@total_elements%> </h2>
+<h2>Total cost: <%=@total_cost%> </h2>
+<table class="table table-striped">
+<thead>
+  <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Price</th> 
+  </tr>
+</thead>
+<tbody>
+  <% @requirements.each do |item| %>
+  <tr>
+  <td> <%= item[:name]%> </td>
+  <td> <%= item[:required] %> </td>
+  <td> $<%= item[:price] %> </td>
+  <% end %>
+  </tr>
+</tbody>
+</table>
