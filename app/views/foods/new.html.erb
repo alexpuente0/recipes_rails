@@ -1,5 +1,11 @@
-<div>
-  <h1>New Food</h1> 
+<%= render 'shared/navigation', post: @post%>
+
+<div class="sm:flex justify-center p-5">
+ <h1 class="text-2xl font-normal leading-normal mt-0 mb-2">  
+New Item </h1>
+</div>
+
+ <div class="sm:flex justify-center p-5 border-2 border-gray-300">
   <%= form_with model: @food do |form|%>
     <div>
       <%= form.label :name%> <br>
@@ -21,7 +27,7 @@
       <%= form.number_field :price, step: :any%>
     </div>
 
-    <%= form.submit%>
+    <%= form.submit "Create Food", class: "bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"%>
   
   <%end%>
 </div> 
