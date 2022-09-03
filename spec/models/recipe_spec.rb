@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
-  let (:user) { User.create(id: 1, name: 'John Doe', email: 'jhon@gmail.com', password: '123456') }
-  let(:recipe) { Recipe.create(user:, name: 'bolon', preparation_time: 2, cooking_time: 2, description: 'description', public: false) }
+  let(:user) { User.create(id: 1, name: 'John Doe', email: 'jhon@gmail.com', password: '123456') }
+  let(:recipe) do
+    Recipe.create(user:, name: 'bolon', preparation_time: 2, cooking_time: 2, description: 'description', public: false)
+  end
 
   describe 'validations' do
     context 'when name is missing' do

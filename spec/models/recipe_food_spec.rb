@@ -1,9 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe RecipeFood, type: :model do
-  let (:user) { User.create(id: 1, name: 'John Doe', email: 'jhon@gmail.com', password: '123456') }
-  let (:food) { Food.create(id: 1, name: 'Pineapple', measurement_unit: 'kg', price: 2, quantity: 1, user:) }
-  let (:recipe) { Recipe.create(id: 1, user:, name: 'bolon', preparation_time: 2, cooking_time: 2, description: 'description', public: false) }
+  let(:user) { User.create(id: 1, name: 'John Doe', email: 'jhon@gmail.com', password: '123456') }
+  let(:food) { Food.create(id: 1, name: 'Pineapple', measurement_unit: 'kg', price: 2, quantity: 1, user:) }
+  let(:recipe) do
+    Recipe.create(id: 1, user:, name: 'bolon', preparation_time: 2, cooking_time: 2, description: 'description',
+                  public: false)
+  end
   let(:recipe_food) { RecipeFood.create(id: 1, recipe:, food:, quantity: 1) }
 
   describe 'validations' do
