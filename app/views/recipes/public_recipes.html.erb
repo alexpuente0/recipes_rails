@@ -1,0 +1,32 @@
+<%= render 'shared/navigation', post: @post%>
+
+<div class="sm:flex justify-center p-5">
+<h1 class="text-2xl font-normal leading-normal mt-0 mb-2"> 
+All Recipes </h1>
+</div>
+
+<div class="sm:flex flex-col items-center">
+
+  <% @recipes.each do |recipe| %>
+  
+
+      <%= link_to recipe_path(recipe.id), class: "border-2 border-gray-300 hover:border-gray-500 m-2 p-2 bg-white sm:flex items-center justify-between w-6/12" do %>
+
+        <div class="sm:flex flex-col">
+          <p><%= recipe.name %> </p>
+          <p>by: <%= recipe.user.name%> </p>
+        </div>
+        <div class="sm:flex flex-col">
+          <p>total items: <%= recipe.recipe_foods.length%> </p>
+          <%cost = []%>
+          <% recipe.recipe_foods.includes([:food]).each do |food| %>
+            <% cost << food.quantity * food.food.price%>
+         <%end%>
+          <p>$<%=cost.sum%></p>
+        </div>
+        
+      <%end%>
+    
+  <% end %> 
+
+</div>
