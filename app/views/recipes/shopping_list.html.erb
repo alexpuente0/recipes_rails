@@ -5,10 +5,6 @@
 Shopping List </h1>
 </div>
 
-<%= @recipes %>
-
-
-
 <div class="sm:flex flex-col items-center">
 <div class="border-2 border-gray-300 w-auto m-2 p-2 bg-white sm:flex items-center justify-between w-6/12">
 <h2>Total elements: <%=@total_elements%> </h2>
@@ -25,7 +21,7 @@ Shopping List </h1>
   <% @requirements.each do |item| %>
   <tr class="even:bg-gray-300">
   <td> <%= item[:name]%> </td>
-  <td> <%= item[:required] %> </td>
+  <td> <%= item[:diff] %> </td>
   <td> $<%= item[:price] %> </td>
   <% end %>
   </tr>
